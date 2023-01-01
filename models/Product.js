@@ -61,20 +61,13 @@ const productSchema = mongoose.Schema({
 }, {
   timestamps: true,
 })
-
-
 productSchema.pre('save', function (next) {
-
   //this -> 
   console.log(' Before saving data');
   if (this.quantity == 0) {
     this.status = 'out-of-stock'
   }
-
   next()
 })
-
-
 const Product = mongoose.model('Product', productSchema)
-
 module.exports = Product;
